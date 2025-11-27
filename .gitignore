@@ -3,6 +3,11 @@ react-for-everyone.md
 component.md
 draft
 
+.idea/
+# vscode
+.vscode/
+# MacOS
+.DS_Store
 
 
 
