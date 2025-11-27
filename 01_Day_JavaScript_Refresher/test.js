@@ -260,5 +260,5 @@ const a1 = n => {
     return a2
 }
 
-console.log(a1(2)(3)(10)) // => 43
+console.log(a1(2)(3)(10)) // => 23
 
