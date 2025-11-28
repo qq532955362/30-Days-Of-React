@@ -251,7 +251,9 @@ console.log(cube(3)) // => 27
 console.log(cube(4)) // => 64
 
 const a1 = n => {
+    n += 2
     const a2 = m => {
+        n += 3
         const a3 = t => {
             return 2 * n + 3 * m + t;
         }
@@ -261,4 +263,163 @@ const a1 = n => {
 }
 
 console.log(a1(2)(3)(10)) // => 23
+
+// 回调函数
+
+const numbers = [1, 2, 3, 4]
+const sumArray = arr => {
+    let sum = 0
+    const callback = function (element) {
+        sum += element
+    }
+    arr.forEach(callback)
+    return sum
+
+}
+console.log(sumArray(numbers))
+
+const [x, y] = [2, v => v ** 3]
+
+console.log(x) // 2
+console.log(y(x)) // 8
+
+
+// 对象解构赋值，并设置默认值
+const rectangle = {
+    width: 20,
+    height: 10,
+}
+let { width, height, perimeter = 200 } = rectangle
+console.log(width, height, perimeter)   // 20 10 200
+
+//重命名解构赋值
+const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 25,
+}
+let { firstName: fName, lastName: lName, age: personAge } = person
+console.log(fName, lName, personAge) // John Doe 25
+
+
+const calcualteArea = ({ width, height }) => width * height
+console.log(calcualteArea(rectangle)) // 200
+const calculatePerimeter = ({ width, height }) => 2 * (width + height)
+console.log(calculatePerimeter(rectangle)) // 60
+
+
+
+const getPersonInfo = ({ firstName, lastName, sex, age, country, job, skills, languages }) => {
+    return `${firstName} ${lastName}. ${sex ? 'He' : 'She'} is ${age} years old. ${sex ? 'He' : 'She'} lives in ${country}. ${sex ? 'He' : 'She'} is a ${job}. ${sex ? 'He' : 'She'} has skills in ${skills.join(', ')}. ${sex ? 'He' : 'She'} speak ${languages.join(', ')}.`
+}
+console.log(getPersonInfo({
+    firstName: 'Asabeneh',
+    lastName: 'Yetayeh',
+    age: 250,
+    country: 'Finland',
+    job: 'Instructor and Developer',
+    skills: [
+        'HTML',
+        'CSS',
+        'JavaScript',
+        'React',
+        'Redux',
+        'Node',
+        'MongoDB',
+        'Python',
+        'D3.js',
+    ],
+    languages: ['Amharic', 'English', 'Suomi(Finnish)'],
+}))
+
+
+const evens = [0, 2, 4, 6, 8, 10]
+const evenNumbers = [...evens]
+
+const odds = [1, 3, 5, 7, 9]
+const oddNumbers = [...odds]
+
+const wholeNumbers = [...evens, ...odds]
+
+console.log(evenNumbers)
+console.log(oddNumbers)
+console.log(wholeNumbers)
+
+const user = {
+    name: 'Asabeneh',
+    title: 'Programmer',
+    country: 'Finland',
+    city: 'Helsinki',
+}
+
+const copiedUser = { ...user }
+console.log(copiedUser)
+
+
+const sumAllNums = (...args) => {
+    let sum = 0
+    for (const num of args) {
+        sum += num
+    }
+    return sum
+}
+
+console.log(sumAllNums(1, 2, 3, 4, 5))
+
+const sum = numbers.reduce((acc, cur) => acc + cur)
+
+
+const testArr = ['aaa', 'bbb', 'ccc', 'ddd']
+const testArrRes = testArr.reduce((acc, cur) => acc + ' ' + cur)
+console.log(testArrRes)
+
+
+const strs = ['Hello', 'world', '!']
+const helloWorld = strs.reduce((acc, cur) => acc + ' ' + cur, 1)
+console.log(helloWorld)
+
+const findRes = strs.findIndex((acc) => acc.length > 5)
+console.log(findRes)
+
+
+const products = [
+    { product: 'banana', price: 3 },
+    { product: 'mango', price: 6 },
+    { product: 'potato', price: ' ' },
+    { product: 'avocado', price: 8 },
+    { product: 'coffee', price: 10 },
+    { product: 'tea', price: '' },
+]
+products.forEach(e => {
+    console.log(`The price of  ${e.product} is ${e.price > 0 ? e.price : 'unknown'}.`)
+})
+
+const totalPrice = products.map(e => e.price).filter(price => typeof price === 'number' && price > 0).reduce((acc, cur) => acc + cur, 0)
+console.log(totalPrice)
+
+
+const firstNoPriceProduct = products.find(e => typeof e.price !== 'number' || e.price <= 0)
+console.log(firstNoPriceProduct)
+
+const firstNoPriceProductIndex = products.findIndex(e => typeof e.price !== 'number' || e.price <= 0)
+console.log(firstNoPriceProductIndex)
+
+
+class Person {
+  constructor(firstName, lastName) {
+    console.log(this) // Check the output from here
+    this.firstName = firstName
+    this.lastName = lastName
+    console.log(this) // Check the output from here
+  }
+}
+
+new Person('Asabeneh', 'Yetayeh');
+
+
+
+
+
+
+
 
